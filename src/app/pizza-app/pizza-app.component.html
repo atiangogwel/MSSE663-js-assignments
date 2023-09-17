@@ -1,0 +1,13 @@
+<div class="pizza-app">
+  <div class="pizza-viewer">
+    <div class="pizza" *ngFor="let pizza of pizzas">
+      <div class="pizza__board"></div>
+      <div class="pizza__base"></div>
+    </div>
+  </div>
+  <div class="pizza__summary">
+    <p *ngFor="let pizza of pizzas">{{ pizza.name }} ({{ pizza.size }}): ${{ pizza.price }}</p>
+  </div>
+</div>
+
+

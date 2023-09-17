@@ -1,0 +1,22 @@
+<div class="center-card">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Add New Pizza</h2>
+      <form>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" class="form-control" [(ngModel)]="pizza.name">
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" class="form-control" [(ngModel)]="pizza.description"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <input type="number" id="price" name="price" class="form-control" [(ngModel)]="pizza.price">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Pizza</button>
+      </form>
+    </div>
+  </div>
+</div>
