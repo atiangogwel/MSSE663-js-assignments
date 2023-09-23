@@ -1,13 +1,16 @@
-<div class="pizza-app">
-  <div class="pizza-viewer">
-    <div class="pizza" *ngFor="let pizza of pizzas">
-      <div class="pizza__board"></div>
-      <div class="pizza__base"></div>
-    </div>
-  </div>
-  <div class="pizza__summary">
-    <p *ngFor="let pizza of pizzas">{{ pizza.name }} ({{ pizza.size }}): ${{ pizza.price }}</p>
-  </div>
-</div>
-
-
+<table>
+  <thead>
+    <tr>
+      <th>Pizza Name</th>
+      <th>Description</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pizza of pizzas">
+      <td>{{ pizza.name }}</td>
+      <td>{{ pizza.description }}</td>
+      <td>{{ pizza.price }}</td>
+    </tr>
+  </tbody>
+</table>

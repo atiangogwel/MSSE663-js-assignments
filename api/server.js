@@ -1,40 +1,26 @@
 const express = require('express');
-const cors = require('cors'); // Import the cors middleware
+const cors = require('cors');
 const app = express();
 const port = 3001;
-
-//cors middleware to enable CORS
+const mongoose = require('mongoose');
+const Pizza = require('./models/pizza'); 
+const pizzaRoutes = require('./routes/pizzas');
+//middleware
 app.use(cors({ origin: 'http://localhost:4200' }));
+app.use(express.json());
 
-// Define a route for pizzas
-app.get('/api/pizzas', (req, res) => {
-  // Sample pizza data
-  const pizzas = [
-    {
-      id: 1,
-      name: 'Margherita',
-      description: 'Classic tomato and mozzarella cheese pizza',
-      price: 9.99,
-    },
-    {
-      id: 2,
-      name: 'Pepperoni',
-      description: 'Pepperoni and cheese pizza',
-      price: 10.99,
-    },
-    {
-      id: 3,
-      name: 'Vegetarian',
-      description: 'Assorted vegetables and cheese pizza',
-      price: 11.99,
-    },
-  ];
-
-  // Send pizza data as JSON response
-  res.json(pizzas);
+mongoose.connect('mongodb://localhost/pizzas', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
-// Start the server
+const db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

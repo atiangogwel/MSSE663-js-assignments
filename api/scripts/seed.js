@@ -16,7 +16,6 @@ db.once('open', async () => {
     { name: 'Margherita', size: 'Medium', price: 9.99 },
     { name: 'Pepperoni', size: 'Large', price: 11.99 },
     { name: 'Vegetarian', size: 'Large', price: 12.99 },
-    // Add more pizzas as needed
   ];
 
   try {
