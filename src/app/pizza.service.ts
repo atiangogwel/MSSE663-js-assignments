@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PizzaService {
-  private apiUrl = 'http://localhost:3001/pizzas'; // Replace with your Node.js server URL
+  private apiUrl = 'http://localhost:3001/pizzas';
 
   constructor(private http: HttpClient) {}
 
@@ -14,6 +14,11 @@ export class PizzaService {
   }
 
   addPizza(pizza: any) {
-    return this.http.post(`${this.apiUrl}/pizzas`, pizza);
+    return this.http.post(this.apiUrl, pizza);
+  }
+
+  deletePizza(pizzaId: number) {
+    const deleteUrl = `${this.apiUrl}/${pizzaId}`;
+    return this.http.delete(deleteUrl);
   }
 }

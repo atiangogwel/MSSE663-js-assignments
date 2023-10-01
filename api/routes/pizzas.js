@@ -2,10 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Pizza = require('../models/pizza'); 
 
-
-
 // Fetch all pizzas
-router.get('/', async (req, res) => {
+router.get('/', async (req, res) => {zzzzz
   try {
     const pizzas = await Pizza.find();
 
@@ -23,27 +21,15 @@ router.get('/', async (req, res) => {
 });
 
 // Add a new pizza
-router.post('/pizzas', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { name, description, price } = req.body;
-
-    if (!name || !description || !price) {
-      return res.status(400).json({ error: 'Missing required fields' });
-    }
-
-    const newPizza = new Pizza({
-      name,
-      description,
-      price,
-    });
-
-    await newPizza.save();
-
-    res.status(201).json(newPizza);
-  } catch (err) {
-    console.error('Error adding pizza:', err);
+    const pizza = new Pizza({ name, description, price });
+    await pizza.save();
+    res.status(201).json(pizza);
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
 module.exports = router;

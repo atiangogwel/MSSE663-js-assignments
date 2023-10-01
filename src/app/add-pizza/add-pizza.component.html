@@ -2,23 +2,18 @@
   <div class="card">
     <div class="card-body">
       <h2 class="card-title">Add New Pizza</h2>
-      <form (submit)="onSubmit()">
-        <div>
-          <label for="name">Pizza Name:</label>
-          <input type="text" id="name" name="name" [(ngModel)]="pizzaName" required>
-        </div>
-        <div>
-          <label for="description">Description:</label>
-          <input type="text" id="description" name="description" [(ngModel)]="pizzaDescription" required>
-        </div>
-        <div>
-          <label for="price">Price:</label>
-          <input type="number" id="price" name="price" [(ngModel)]="pizzaPrice" required>
-        </div>
+      <form (ngSubmit)="addPizza()">
+        <label for="name">Pizza Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="pizza.name" required>
+      
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" [(ngModel)]="pizza.description" required></textarea>
+      
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" [(ngModel)]="pizza.price" required>
+      
         <button type="submit">Add Pizza</button>
       </form>
-      
-      
       
     </div>
   </div>

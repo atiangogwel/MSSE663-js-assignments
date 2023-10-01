@@ -12,9 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './counter.reducer';
+import { PricePipe } from './price.pipe';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PizzaAppComponent, NavbarComponent, AddPizzaComponent,],
+  declarations: [AppComponent, HomeComponent, PizzaAppComponent, NavbarComponent, AddPizzaComponent, PricePipe,],
   imports: [BrowserModule,StoreModule,FormsModule,ReactiveFormsModule, AppRoutingModule,HttpClientModule, FormsModule], // Import the AppRoutingModule
   bootstrap: [AppComponent],
   providers: [PizzaService]

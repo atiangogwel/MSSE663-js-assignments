@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { PizzaService } from '../pizza.service';
 import { Router } from '@angular/router';
 
+interface Pizza {
+  name: string;
+  description: string;
+  price: number;
+}
 
 @Component({
   selector: 'app-add-pizza',
@@ -9,29 +14,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-pizza.component.scss']
 })
 export class AddPizzaComponent {
-  pizzaName: string = '';
-  pizzaDescription: string = '';
-  pizzaPrice: number = 0;
+  pizza: Pizza = {
+    name: '',
+    description: '',
+    price: 0
+  };
 
   constructor(private pizzaService: PizzaService, private router: Router) {}
 
-  onSubmit() {
-    const newPizza = {
-      name: this.pizzaName,
-      description: this.pizzaDescription,
-      price: this.pizzaPrice
-    };
-
-    this.pizzaService.addPizza(newPizza).subscribe((response) => {
-      console.log('Pizza added:', response);
-      // Reset form fields
-      this.pizzaName = '';
-      this.pizzaDescription = '';
-      this.pizzaPrice = 0;
-
-      alert('Pizza added successfully');
-      // Redirect to the "pizzas" page
-      this.router.navigate(['/pizzas']);
-    });
+  addPizza() {
+    // Call the PizzaService to add the pizza
+    this.pizzaService.addPizza(this.pizza).subscribe(
+      (response) => {
+        // Handle the response, e.g., show a success message or reset the form
+        console.log('Pizza added successfully:', response);
+        // Reset the form
+        this.pizza = {
+          name: '',
+          description: '',
+          price: 0
+        };
+        alert('Pizza added successfully');
+        this.router.navigate(['/pizzas']);
+      },
+      (error) => {
+        // Handle any errors, e.g., display an error message
+        console.error('Error adding pizza:', error);
+      }
+    );
   }
 }
