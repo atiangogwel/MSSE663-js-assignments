@@ -26,7 +26,6 @@ export class AddPizzaComponent {
     // Call the PizzaService to add the pizza
     this.pizzaService.addPizza(this.pizza).subscribe(
       (response) => {
-        // Handle the response, e.g., show a success message or reset the form
         console.log('Pizza added successfully:', response);
         // Reset the form
         this.pizza = {
@@ -38,7 +37,6 @@ export class AddPizzaComponent {
         this.router.navigate(['/pizzas']);
       },
       (error) => {
-        // Handle any errors, e.g., display an error message
         console.error('Error adding pizza:', error);
       }
     );
