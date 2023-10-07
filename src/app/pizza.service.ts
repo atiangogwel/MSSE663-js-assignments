@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Observable } from 'rxjs'
 @Injectable({
   providedIn: 'root'
 })
@@ -12,13 +12,24 @@ export class PizzaService {
   getPizzas() {
     return this.http.get(this.apiUrl);
   }
+//get by id
+  getPizzaById(pizzaId: string): Observable<any> {
+    const url = `${this.apiUrl}/${pizzaId}`;
+    return this.http.get(url);
+  }
 
   addPizza(pizza: any) {
     return this.http.post(this.apiUrl, pizza);
   }
+  
 
-  deletePizza(pizzaId: number) {
-    const deleteUrl = `${this.apiUrl}/${pizzaId}`;
-    return this.http.delete(deleteUrl);
+  deletePizza(pizzaId: string): Observable<any> {
+    const url = `${this.apiUrl}/${pizzaId}`;
+    return this.http.delete(url);
   }
+  updatePizza(pizzaId: string, pizzaData: any): Observable<any> {
+    const url = `${this.apiUrl}/${pizzaId}`;
+    return this.http.put(url, pizzaData);
+  }
+  
 }

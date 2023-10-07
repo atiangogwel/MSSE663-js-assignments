@@ -1,16 +1,17 @@
 <input type="text" [(ngModel)]="searchQuery" placeholder="Search pizzas" (input)="filterPizzasByName()">
 
-<h3>Available Pizzas</h3>
+
 <div class="row">
+  <h3>Available Pizzas</h3>
   <ng-container *ngFor="let pizza of filteredPizzas; let i = index">
     <div class="card">
       <h3>{{ pizza.name }}</h3>
       <p>{{ pizza.description }}</p>
       <p>Price: {{ pizza.price | currency:'USD' }}</p>
-      <input type="hidden" [(ngModel)]="pizza.id">
-      <button (click)="deletePizza(pizza.id)">Delete</button>   
+      <button (click)="deletePizza(pizza._id)" class="delete-button">Delete</button>
+      <button (click)="editPizza(pizza._id)" class="edit-button">Edit</button>
+
     </div>
-    <!-- Add a new row after every 4 items -->
     <div *ngIf="(i + 1) % 4 === 0 || i === filteredPizzas.length - 1" class="clearfix"></div>
   </ng-container>
 </div>

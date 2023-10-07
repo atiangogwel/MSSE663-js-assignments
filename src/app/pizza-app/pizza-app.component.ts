@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PizzaService } from '../pizza.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pizza-app',
@@ -11,13 +12,12 @@ export class PizzaAppComponent implements OnInit {
   filteredPizzas: any[] = [];
   searchQuery: string = '';
 
-  constructor(private pizzaService: PizzaService) {}
+  constructor(private pizzaService: PizzaService, private router: Router) {} 
 
   ngOnInit() {
-    // Initial GET request to fetch all pizzas from the database
     this.pizzaService.getPizzas().subscribe((data: any) => {
       this.pizzas = data;
-      this.filteredPizzas = data; // Initialize filteredPizzas with all pizzas
+      this.filteredPizzas = data; 
     });
   }
 
@@ -27,16 +27,30 @@ export class PizzaAppComponent implements OnInit {
     );
   }
 
-  deletePizza(pizzaId: number) {
-    if (pizzaId !== undefined) {
-      // Call the deletePizza method from the service
-      this.pizzaService.deletePizza(pizzaId).subscribe(() => {
-        // If the deletion is successful, remove the pizza from the local array
-        this.pizzas = this.pizzas.filter((pizza) => pizza.id !== pizzaId);
-        this.filteredPizzas = this.filteredPizzas.filter((pizza) => pizza.id !== pizzaId);
-      });
-    } else {
-      console.error('Invalid pizza ID:', pizzaId);
-    }
+  deletePizza(pizzaId: string) {
+    this.pizzaService.deletePizza(pizzaId).subscribe(
+      () => {
+        console.log('Pizza deleted successfully');
+        alert('Pizza deleted successfully');
+        const index = this.pizzas.findIndex((pizza) => pizza._id === pizzaId);
+        if (index !== -1) {
+          this.pizzas.splice(index, 1);
+          this.filteredPizzas = [...this.pizzas]; 
+        }
+        this.router.navigate(['/pizzas']); 
+      },
+      (error) => {
+        console.error('Error deleting pizza:', error);
+      }
+    );
   }
+  editPizza(pizzaId: string) {
+    this.router.navigate(['/edit-pizza', pizzaId]);
+  }
+
+  
+  
+  
+  
+  
 }
