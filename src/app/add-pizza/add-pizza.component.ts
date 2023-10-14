@@ -37,6 +37,7 @@ export class AddPizzaComponent {
         this.router.navigate(['/pizzas']);
       },
       (error) => {
+        alert('Error! Somthing went wrong');
         console.error('Error adding pizza:', error);
       }
     );
