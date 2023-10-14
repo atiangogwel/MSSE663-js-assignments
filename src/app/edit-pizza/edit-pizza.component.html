@@ -1,20 +1,21 @@
-      <div class="center-card">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title">Edit Pizza Data</h2>
-            <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-              <label for="name">Name:</label>
-              <input type="text" id="name" formControlName="name">
-    
-              <label for="description">Description:</label>
-              <textarea id="description" formControlName="description"></textarea>
-    
-              <label for="price">Price:</label>
-              <input type="number" id="price" formControlName="price">
-    
-              <button type="submit" class="update_button">Update</button>
-            </form>
-          </div>
-        </div>
-      </div>
-      
+<div class="center-card">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Edit Pizza Data</h2>
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="name">
+
+        <label for="description">Description:</label>
+        <textarea id="description" formControlName="description"></textarea>
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" formControlName="price">
+
+        <button type="submit" class="update_button">Update</button>
+
+        <button type="button" class="cancel_button" (click)="goBackToPizzas()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>

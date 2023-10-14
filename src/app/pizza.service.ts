@@ -31,5 +31,13 @@ export class PizzaService {
     const url = `${this.apiUrl}/${pizzaId}`;
     return this.http.put(url, pizzaData);
   }
+  reservePizza(pizzaId: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/${pizzaId}/reserve`, {});
+  }
+  unreservePizza(pizzaId: string) {
+    return this.http.post(`${this.apiUrl}/${pizzaId}/unreserve`, {});
+  }
+  
+  
   
 }

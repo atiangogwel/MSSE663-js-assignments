@@ -1,7 +1,8 @@
-<input type="text" [(ngModel)]="searchQuery" placeholder="Search pizzas" (input)="filterPizzasByName()">
-
-
 <div class="row">
+  <input type="text" class="search-box" [(ngModel)]="searchQuery" placeholder="Search pizzas" (input)="filterPizzasByName()">
+  <button (click)="toggleReservedPizzas()" class="toggle-button">
+    {{ showReservedPizzas ? 'View All Pizzas' : 'View Reserved Pizzas' }}
+  </button>
   <h3>Available Pizzas</h3>
   <ng-container *ngFor="let pizza of filteredPizzas; let i = index">
     <div class="card">
@@ -10,7 +11,12 @@
       <p>Price: {{ pizza.price | currency:'USD' }}</p>
       <button (click)="deletePizza(pizza._id)" class="delete-button">Delete</button>
       <button (click)="editPizza(pizza._id)" class="edit-button">Edit</button>
-
+      <button (click)="reservePizza(pizza)" [disabled]="pizza.reserved" class="reserve-button">
+        {{ pizza.reserved ? 'Reserved' : 'Reserve' }}
+      </button>
+      <button (click)="undoReservePizza(pizza)" *ngIf="pizza.reserved" class="undo-button">
+        Undo
+      </button>
     </div>
     <div *ngIf="(i + 1) % 4 === 0 || i === filteredPizzas.length - 1" class="clearfix"></div>
   </ng-container>

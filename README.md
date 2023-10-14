@@ -1,6 +1,9 @@
 # ClassApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
+This is a simple angular and node application to manage pizza data. The application replicates the functions of a waiter or an administrator at a hotel. One can add new pizza data, edit existing pizza data, and delete and reserve a pizza. 
+To run the server-end,first, navigate to the folder ‘api’ and run the command ‘node server.js.’
+One must have node version 20.5.1 (latest) installed to run the application 
+
 
 ## Development server
 

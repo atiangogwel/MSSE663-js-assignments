@@ -41,4 +41,7 @@ export class AddPizzaComponent {
       }
     );
   }
+  goBackToPizzas() {
+    this.router.navigate(['/pizzas']);
+  }
 }

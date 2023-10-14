@@ -12,6 +12,7 @@
         <label for="price">Price:</label>
         <input type="number" id="price" name="price" [(ngModel)]="pizza.price" required>
         <button type="submit">Add Pizza</button>
+        <button type="button" class="cancel_button" (click)="goBackToPizzas()">Cancel</button>
       </form>
       
     </div>

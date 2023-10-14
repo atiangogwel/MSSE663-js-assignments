@@ -1,0 +1,4 @@
+This is a simple angular and node application to manage pizza data. The application replicates the functions of a waiter or an administrator at a hotel. One can add new pizza data, edit existing pizza data, and delete and reserve a pizza. 
+To run the application, first, navigate to the folder ‘api’ and run the command ‘node server.js.’
+Then in the root folder, run ‘ng serve. 
+One must have node version 20.5.1 (latest) installed to run the application 

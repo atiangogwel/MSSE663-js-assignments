@@ -45,4 +45,7 @@ export class EditPizzaComponent implements OnInit {
       }
     );
   }
+  goBackToPizzas() {
+    this.router.navigate(['/pizzas']);
+  }
 }

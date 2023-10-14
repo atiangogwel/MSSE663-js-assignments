@@ -5,7 +5,7 @@ const pizzaSchema = new mongoose.Schema({
   name: String,
   description: String,
   price: Number,
-  imageUrl: String 
+  reserved: Boolean, 
 });
 
 const Pizza = mongoose.model('Pizza', pizzaSchema);

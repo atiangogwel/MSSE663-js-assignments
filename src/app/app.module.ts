@@ -11,7 +11,8 @@ import { AddPizzaComponent } from './add-pizza/add-pizza.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PricePipe } from './price.pipe';
 import { EditPizzaComponent } from './edit-pizza/edit-pizza.component';
-import { RouterModule, Routes } from '@angular/router'; // Import RouterModule for routes
+import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './about/about.component'; // Import RouterModule for routes
 const routes: Routes = [
   { path: 'edit-pizza/:id', component: EditPizzaComponent }
 ];
@@ -25,6 +26,7 @@ const routes: Routes = [
     AddPizzaComponent,
     PricePipe,
     EditPizzaComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
