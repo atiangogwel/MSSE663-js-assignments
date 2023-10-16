@@ -10,4 +10,5 @@ The application does not have static data. All data will be added by the user fr
 Navigate to 'api' then run node server.js
 
 ## starting the frontend server
+Run ng serve within the root folder
 
